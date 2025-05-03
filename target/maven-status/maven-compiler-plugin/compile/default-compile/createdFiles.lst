@@ -1,0 +1,7 @@
+com\example\piplchecker\service\AiChatService$1.class
+com\example\piplchecker\controller\AiChatController.class
+com\example\piplchecker\service\BaiduApiService.class
+com\example\piplchecker\config\BaiduApiConfig.class
+com\example\piplchecker\service\AiChatService.class
+com\example\piplchecker\controller\FileUploadController.class
+com\example\piplchecker\PiplCheckerApplication.class

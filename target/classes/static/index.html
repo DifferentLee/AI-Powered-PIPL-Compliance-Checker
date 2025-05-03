@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Powered PIPL Compliance Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0a58ca;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0a58ca;
+            margin-top: 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .feature i {
+            font-size: 24px;
+            color: #0a58ca;
+            margin-right: 12px;
+        }
+
+        .highlight {
+            background: #f0f8ff;
+            padding: 10px 15px;
+            border-left: 5px solid #0a58ca;
+            margin: 20px 0;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="file"],
+        button {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #0a58ca;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #084298;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .chat-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .user-message {
+            background: #e3f2fd;
+            margin-left: 20%;
+        }
+
+        .ai-message {
+            background: #f5f5f5;
+            margin-right: 20%;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .chat-input button {
+            padding: 8px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AI-Powered PIPL Compliance Checker</h1>
+        <p>Automatically identify whether privacy policies comply with China's Personal Information Protection Law ·
+            Powered by Baidu ERNIE LLM</p>
+    </header>
+
+    <div class="section">
+        <h2>🚀 Project Introduction</h2>
+        <p>
+            This system uses AI models to analyze privacy policy texts and determine whether they meet PIPL
+            requirements. Compared to traditional manual review, this tool supports <b>batch detection, structured
+                output, and fast response</b>, helping enterprises efficiently complete data governance tasks under
+            compliance pressure.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>✨ Core Product Highlights</h2>
+        <div class="feature"><i class="fas fa-microchip"></i> AI inference engine powered by Baidu ERNIE</div>
+        <div class="feature"><i class="fas fa-rocket"></i> Supports batch .txt file detection, automatic compliance
+            label output</div>
+        <div class="feature"><i class="fas fa-laptop-code"></i> Dual architecture: Web + GUI desktop version</div>
+        <div class="feature"><i class="fas fa-shield-alt"></i> Local run option to ensure data privacy</div>
+        <div class="feature"><i class="fas fa-chart-line"></i> Outputs structured CSV reports for archiving and auditing
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🧠 System Architecture</h2>
+        <img src="/images/system-architecture.jpg" width="100%" alt="System Architecture" />
+        <p class="highlight">Modules include: Uploader, Content Extractor, Model API Caller, Results Aggregator,
+            Visualization Frontend, and PIPL Compliance Report.</p>
+    </div>
+
+    <div class="section">
+        <h2>📄 Instructions</h2>
+        <p>Please upload a .zip file containing several privacy policy .txt files. The system will analyze each for
+            compliance.</p>
+        <form id="uploadForm" action="/upload-zip/" method="post" enctype="multipart/form-data">
+            <label>Upload ZIP file:</label><br>
+            <input type="file" name="file" accept=".zip" required /><br><br>
+            <button type="submit">Analyze Now</button>
+        </form>
+        <p id="result" style="margin-top:20px;"></p>
+    </div>
+
+    <div class="section">
+        <h2>💼 Application Scenarios & Business Potential</h2>
+        <ul>
+            <li>✅ Used by enterprise legal/data teams to improve compliance review efficiency by 10x</li>
+            <li>✅ Integrate with third-party compliance platforms as an API module</li>
+            <li>✅ Government agencies/university research data governance labs for testing and validation</li>
+        </ul>
+        <div class="highlight">
+            📈 Market analysis: Millions of small and medium-sized websites/apps in China still lack compliance checking
+            tools. After PIPL implementation, manual review costs are extremely high. We fill the automation gap.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎬 Project Demo</h2>
+        <p>Below are the feature demo video and source code link:</p>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">📺 Video Demo</a></li>
+            <li><a href="https://github.com/your_project_repo" target="_blank">💻 GitHub Source Code</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🤖 AI Compliance Assistant</h2>
+        <div class="chat-container">
+            <div id="chat-messages" class="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="user-message" placeholder="Type your question..." />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>👨‍💻 Team Information</h2>
+        <ul>
+            <li>HU, Yuquan — 1155229012</li>
+            <li>LI, Yiran — 1155219362</li>
+        </ul>
+    </div>
+
+    <footer>
+        &copy; 2025 PIPL AI Compliance Project | IERG5050 CUHK
+    </footer>
+
+    <script>
+        const form = document.getElementById("uploadForm");
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: formData
+            });
+
+            const resultArea = document.getElementById("result");
+            if (response.ok) {
+                const blob = await response.blob();
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "PIPL_compliance.csv";
+                link.textContent = "Download Compliance Report (CSV)";
+                resultArea.innerHTML = "";
+                resultArea.appendChild(link);
+            } else {
+                resultArea.textContent = "Upload failed or server error: " + response.statusText;
+            }
+        });
+
+        function addMessage(message, isUser) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('user-message');
+            const message = input.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            input.value = '';
+
+            try {
+                const response = await fetch('/api/chat/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    addMessage(data.response, false);
+                } else {
+                    addMessage('Error: ' + data.error, false);
+                }
+            } catch (error) {
+                addMessage('Error sending message: ' + error.message, false);
+            }
+        }
+
+        // Add Enter key send functionality
+        document.getElementById('user-message').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+
+</html>
